@@ -1,0 +1,22 @@
+{
+  "name": "hapi-boilerplate",
+  "version": "0.0.1",
+  "description": "Get started quickly with hapi + coffee",
+  "author": "Russell Madsen",
+  "repository": "https://github.com/ruzz311/hapi-boilerplate.git",
+  "scripts": {
+    "stat": "node index.js"
+  },
+  "main": "index.js",
+  "keywords": [
+    "boilerplate",
+    "hapi",
+    "coffee-script",
+    "coffee"
+  ],
+  "dependencies": {
+    "hapi": "~0.15.3",
+    "coffee-script": "~1.6.1",
+    "handlebars": "~1.0.10"
+  }
+}
