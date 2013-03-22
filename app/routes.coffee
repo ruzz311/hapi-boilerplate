@@ -1,6 +1,5 @@
-path    = require "path"
-pkg     = require path.resolve(__dirname, '../', 'package.json')
-
+require 'handlebars'
+ 
 # Proxy Route Configs
 proxy =
     prefix: "/api"
@@ -15,18 +14,28 @@ proxy =
             callback null, "#{ t.protocol }://#{ t.url }/#{ t.version }/#{ req.params.path }?key=#{ t.key }"
 
 # App Routes
-routes  = [
+routes  = [{
+        method  : 'GET'
+        path    : '/home'
+        config  : 
+            handler: (request, callback)->
+                locals = 
+                    title: 'Views Example'
+                    message: 'Hello, World'
+                    
+                request.reply.view('index', locals).send()
+    },{
         method  : 'GET'
         path    : '/info'
-        config  :
-            handler: (req) -> req.reply pkg
-    ,
+        handler : 
+            file: './package.json'
+    },{
         method  : 'GET'
         path    : '/api/trello/{path*}'
         handler : 
             proxy:
                 mapUri: proxy.trello.handler
-]
+}]
 
 # Commonly Used Routes
 common = [

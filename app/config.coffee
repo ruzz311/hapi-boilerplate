@@ -1,5 +1,11 @@
+path     = require 'path'
+basePath = path.resolve( __dirname+"", "../" )
+console.log basePath
+
 module.exports = 
     views:
-        path    : './views'
-        engine  :
+        basePath : basePath
+        path     : './templates'
+        engine:
             module: 'handlebars'
+            extension: '.html'
